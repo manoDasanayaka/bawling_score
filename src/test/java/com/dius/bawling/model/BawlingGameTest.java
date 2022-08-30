@@ -14,13 +14,15 @@ class BawlingGameTest {
 
     @Test
     void getBonusScoreWithSpare() throws BawlingException {
-        BawlingFrame testFrame1 = generateBallingFrame(4,5);
-        BawlingFrame testFrame2 = generateBallingFrame(4,6);
-        BawlingFrame testFrame3 = generateBallingFrame(4,2);
-        List<BawlingFrame> gameFrames = new ArrayList<>();
-        gameFrames.add(testFrame1);
-        gameFrames.add(testFrame2);
-        gameFrames.add(testFrame3);
+        List<BawlingFrame> gameFrames = new ArrayList<>(Arrays.asList(new BawlingFrame[]
+                {
+                        generateBallingFrame(4,5), generateBallingFrame(4,5),
+                        generateBallingFrame(4,2),
+                        generateBallingFrame(4,6), generateBallingFrame(4,2),
+                        generateBallingFrame(4,2), generateBallingFrame(4,2),
+                        generateBallingFrame(4,2), generateBallingFrame(4,2),
+                        generateBallingFrame(4,2)
+                }));
 
         BawlingGame game = new BawlingGame();
         game.setGameFrames(gameFrames);
@@ -30,83 +32,71 @@ class BawlingGameTest {
 
     @Test
     void getBonusScoreWithStrike() throws BawlingException {
-        BawlingFrame testFrame1 = generateBallingFrame(4,5);
-
-        BawlingFrame testFrame2 = generateBallingFrame(10);
-        BawlingFrame testFrame3 = generateBallingFrame(4,2);
-        List<BawlingFrame> gameFrames = new ArrayList<>();
-        gameFrames.add(testFrame1);
-        gameFrames.add(testFrame2);
-        gameFrames.add(testFrame3);
-
+        List<BawlingFrame> gameFrames = new ArrayList<>(Arrays.asList(new BawlingFrame[]
+                {
+                        generateBallingFrame(4,5), generateBallingFrame(10),
+                        generateBallingFrame(4,2),
+                        generateBallingFrame(4,2), generateBallingFrame(4,2),
+                        generateBallingFrame(4,2), generateBallingFrame(4,2),
+                        generateBallingFrame(4,2), generateBallingFrame(4,2),
+                        generateBallingFrame(4,2)
+                }));
         BawlingGame game = new BawlingGame();
         game.setGameFrames(gameFrames);
-
         assertEquals(6,game.getBonusScore(), "Bonus score is wrong for a Strike!");
     }
 
 
     @Test
     void getBonusScoreWithSpareAndStrike() throws BawlingException {
-        BawlingFrame testFrame1 = generateBallingFrame(4,5);
-
-        BawlingFrame testFrame2 = generateBallingFrame(10);
-        BawlingFrame testFrame3 = generateBallingFrame(4,2);
-        BawlingFrame testFrame4 = generateBallingFrame(3,7);
-        BawlingFrame testFrame5 = generateBallingFrame(4,2);
-        List<BawlingFrame> gameFrames = new ArrayList<>();
-        gameFrames.add(testFrame1);
-        gameFrames.add(testFrame2);
-        gameFrames.add(testFrame3);
-        gameFrames.add(testFrame4);
-        gameFrames.add(testFrame5);
+        List<BawlingFrame> gameFrames = new ArrayList<>(Arrays.asList(new BawlingFrame[]
+                {
+                        generateBallingFrame(4,5), generateBallingFrame(10),
+                        generateBallingFrame(4,2),
+                        generateBallingFrame(4,6), generateBallingFrame(4,2),
+                        generateBallingFrame(4,2), generateBallingFrame(4,2),
+                        generateBallingFrame(4,2), generateBallingFrame(4,2),
+                        generateBallingFrame(4,2)
+                }));
 
         BawlingGame game = new BawlingGame();
         game.setGameFrames(gameFrames);
-
         assertEquals(10,game.getBonusScore(), "Bonus score is wrong when both a Strike and a Spare!");
     }
 
     @Test
     void getBonusScoreWithManySpare() throws BawlingException {
-        BawlingFrame testFrame1 = generateBallingFrame(4,5);
-        BawlingFrame testFrame2 = generateBallingFrame(5,5);
-        BawlingFrame testFrame3 = generateBallingFrame(2,8);
-        BawlingFrame testFrame4 = generateBallingFrame(3,7);
-        BawlingFrame testFrame5 = generateBallingFrame(4,2);
-        List<BawlingFrame> gameFrames = new ArrayList<>();
-        gameFrames.add(testFrame1);
-        gameFrames.add(testFrame2);
-        gameFrames.add(testFrame3);
-        gameFrames.add(testFrame4);
-        gameFrames.add(testFrame5);
+        List<BawlingFrame> gameFrames = new ArrayList<>(Arrays.asList(new BawlingFrame[]
+                {
+                        generateBallingFrame(4,5), generateBallingFrame(3,6),
+                        generateBallingFrame(8,2),
+                        generateBallingFrame(4,6), generateBallingFrame(4,6),
+                        generateBallingFrame(4,2), generateBallingFrame(4,2),
+                        generateBallingFrame(7,3), generateBallingFrame(4,2),
+                        generateBallingFrame(4,2)
+                }));
 
         BawlingGame game = new BawlingGame();
         game.setGameFrames(gameFrames);
 
-        assertEquals(9,game.getBonusScore(), "Bonus score is wrong when multiple Spare!");
+        assertEquals(16,game.getBonusScore(), "Bonus score is wrong when multiple Spare!");
     }
 
     @Test
     void getBonusScoreWithManyStrikes() throws BawlingException {
-        BawlingFrame testFrame1 = generateBallingFrame(4,5);
-
-        BawlingFrame testFrame2 = generateBallingFrame(10);
-        BawlingFrame testFrame3 = generateBallingFrame(4,2);
-        BawlingFrame testFrame4 = generateBallingFrame(3,7);
-        BawlingFrame testFrame5 = generateBallingFrame(10);
-        BawlingFrame testFrame6 = generateBallingFrame(4,2);
-        List<BawlingFrame> gameFrames = new ArrayList<>();
-        gameFrames.add(testFrame1);
-        gameFrames.add(testFrame2);
-        gameFrames.add(testFrame3);
-        gameFrames.add(testFrame4);
-        gameFrames.add(testFrame5);
-        gameFrames.add(testFrame6);
+        List<BawlingFrame> gameFrames = new ArrayList<>(Arrays.asList(new BawlingFrame[]
+                {
+                        generateBallingFrame(4,5), generateBallingFrame(3,6),
+                        generateBallingFrame(8,2),
+                        generateBallingFrame(4,6), generateBallingFrame(10),
+                        generateBallingFrame(4,2), generateBallingFrame(4,2),
+                        generateBallingFrame(7,3), generateBallingFrame(10),
+                        generateBallingFrame(4,2)
+                }));
         BawlingGame game = new BawlingGame();
         game.setGameFrames(gameFrames);
 
-        assertEquals(22,game.getBonusScore(), "Bonus score is wrong when many Strikes!");
+        assertEquals(36,game.getBonusScore(), "Bonus score is wrong when many Strikes!");
     }
 
     @Test
@@ -173,17 +163,19 @@ class BawlingGameTest {
     @Test
     void getTotalKnockedScore() throws BawlingException {
 
-        BawlingFrame testFrame1 = generateBallingFrame(4,5);
-        BawlingFrame testFrame2 = generateBallingFrame(4,3);
-        BawlingFrame testFrame3 = generateBallingFrame(4,2);
-        List<BawlingFrame> gameFrames = new ArrayList<>();
-        gameFrames.add(testFrame1);
-        gameFrames.add(testFrame2);
-        gameFrames.add(testFrame3);
+        List<BawlingFrame> gameFrames = new ArrayList<>(Arrays.asList(new BawlingFrame[]
+                {
+                        generateBallingFrame(4,5), generateBallingFrame(3,4),
+                        generateBallingFrame(4,2),
+                        generateBallingFrame(4,2), generateBallingFrame(4,2),
+                        generateBallingFrame(4,2), generateBallingFrame(4,2),
+                        generateBallingFrame(4,2), generateBallingFrame(4,2),
+                        generateBallingFrame(4,2)
+                }));
 
         BawlingGame game = new BawlingGame();
         game.setGameFrames(gameFrames);
-        assertEquals(22, game.getTotalKnockedScore(), "Total knocked score is wrong for a Game!");
+        assertEquals(64, game.getTotalKnockedScore(), "Total knocked score is wrong for a Game!");
     }
 
     @Test
@@ -192,7 +184,7 @@ class BawlingGameTest {
             new BawlingGame().setGameFrames(null);
         });
 
-        String expectedMessage = "Only 10 or less frames per Game!";
+        String expectedMessage = "Only 10  frames per Game!";
         String actualMessage = exception.getMessage();
 
         assertTrue(actualMessage.contains(expectedMessage));
@@ -204,7 +196,7 @@ class BawlingGameTest {
             new BawlingGame().setGameFrames(new ArrayList<>());
         });
 
-        String expectedMessage = "Only 10 or less frames per Game!";
+        String expectedMessage = "Only 10  frames per Game!";
         String actualMessage = exception.getMessage();
 
         assertTrue(actualMessage.contains(expectedMessage));
@@ -231,7 +223,7 @@ class BawlingGameTest {
                     })));
         });
 
-        String expectedMessage = "Only 10 or less frames per Game!";
+        String expectedMessage = "Only 10  frames per Game!";
         String actualMessage = exception.getMessage();
 
         assertTrue(actualMessage.contains(expectedMessage));

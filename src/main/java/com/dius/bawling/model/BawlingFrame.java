@@ -4,6 +4,10 @@ import com.dius.bawling.exception.BawlingException;
 
 import java.util.List;
 
+/**
+ * Denotes a Bawling frame.
+ * It contains a list of {@linkplain BawlingTry}.
+ */
 public class BawlingFrame {
 
     private List<BawlingTry> triesList;
@@ -31,7 +35,10 @@ public class BawlingFrame {
         return this.triesList.stream().mapToInt(BawlingTry::getKnockedNumberOfPins).sum();
     }
 
-
+    /**
+     * Flags the frame is with a Strike hit or Spare.
+     * @throws BawlingException when empty tries list or more than two tries.
+     */
     public void populateFrame() throws BawlingException {
         if(this.getTriesList() == null || this.getTriesList().size() > 2 || this.getTriesList().size() == 0)
             throw new BawlingException("Only two or less tries for a Frame!");

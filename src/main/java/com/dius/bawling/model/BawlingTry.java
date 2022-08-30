@@ -1,7 +1,9 @@
 package com.dius.bawling.model;
 
 /**
- * This is the model class to denote a Bawling Try
+ * This is the model class to denote a Bawling Try.
+ * Try contains the number of pins knocked down.
+ * Also, it denotes if that try is a Strike or not.
  */
 public class BawlingTry {
 
