@@ -9,29 +9,29 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BallingFrameTest {
+class BawlingFrameTest {
 
     @Test
     void getTotalOfTries() throws BawlingException {
-        BallingTry[] triesArray1 = new BallingTry[]{ new BallingTry(3), new BallingTry(7)};
-        List<BallingTry> frameTries = new ArrayList<>( Arrays.asList(triesArray1));
-        BallingFrame testFrame = new BallingFrame(frameTries);
+        BawlingTry[] triesArray1 = new BawlingTry[]{ new BawlingTry(3), new BawlingTry(7)};
+        List<BawlingTry> frameTries = new ArrayList<>( Arrays.asList(triesArray1));
+        BawlingFrame testFrame = new BawlingFrame(frameTries);
         assertEquals(10,testFrame.getTotalOfTries(), "Total of tries does not match the Frame score calculations!");
     }
 
     @Test
     void getTotalOfTriesTake2() throws BawlingException {
-        BallingTry[] triesArray1 = new BallingTry[]{ new BallingTry(3), new BallingTry(4)};
-        List<BallingTry> frameTries = new ArrayList<>( Arrays.asList(triesArray1));
-        BallingFrame testFrame = new BallingFrame(frameTries);
+        BawlingTry[] triesArray1 = new BawlingTry[]{ new BawlingTry(3), new BawlingTry(4)};
+        List<BawlingTry> frameTries = new ArrayList<>( Arrays.asList(triesArray1));
+        BawlingFrame testFrame = new BawlingFrame(frameTries);
         assertEquals(7,testFrame.getTotalOfTries(), "Total of tries does not match the Frame score calculations!");
     }
     @Test
     void frameWithSpare() throws BawlingException {
 
-        BallingTry[] triesArray1 = new BallingTry[]{ new BallingTry(3), new BallingTry(7)};
-        List<BallingTry> frameTries = new ArrayList<>( Arrays.asList(triesArray1));
-        BallingFrame testFrame = new BallingFrame(frameTries);
+        BawlingTry[] triesArray1 = new BawlingTry[]{ new BawlingTry(3), new BawlingTry(7)};
+        List<BawlingTry> frameTries = new ArrayList<>( Arrays.asList(triesArray1));
+        BawlingFrame testFrame = new BawlingFrame(frameTries);
         testFrame.populateFrame();
         assertTrue(testFrame.isSpareFrame(),"Total of frame tries did not result in a Spare !");
     }
@@ -39,16 +39,16 @@ class BallingFrameTest {
     @Test
     void frameWithStrike() throws BawlingException {
 
-        BallingTry[] triesArray1 = new BallingTry[]{ new BallingTry(10)};
-        List<BallingTry> frameTries = new ArrayList<>( Arrays.asList(triesArray1));
-        BallingFrame testFrame = new BallingFrame(frameTries);
+        BawlingTry[] triesArray1 = new BawlingTry[]{ new BawlingTry(10)};
+        List<BawlingTry> frameTries = new ArrayList<>( Arrays.asList(triesArray1));
+        BawlingFrame testFrame = new BawlingFrame(frameTries);
         assertTrue(testFrame.isWithStrike(),"Total of frame tries did not result in a Strike !");
     }
 
     @Test
     public void populateFrame_empty_with_Exceptions() {
         Exception exception = assertThrows(BawlingException.class, () -> {
-            new BallingFrame(new ArrayList<>());
+            new BawlingFrame(new ArrayList<>());
         });
 
         String expectedMessage = "Only two or less tries for a Frame!";
@@ -59,10 +59,10 @@ class BallingFrameTest {
     @Test
     public void populateFrame_MoreThan2_Tries_with_Exceptions() {
         Exception exception = assertThrows(BawlingException.class, () -> {
-            new BallingFrame( new ArrayList<>( Arrays.asList(new BallingTry[]{
-                    new BallingTry(10),
-                    new BallingTry(7),
-                    new BallingTry(4)})));
+            new BawlingFrame( new ArrayList<>( Arrays.asList(new BawlingTry[]{
+                    new BawlingTry(10),
+                    new BawlingTry(7),
+                    new BawlingTry(4)})));
 
         });
 
@@ -75,7 +75,7 @@ class BallingFrameTest {
     @Test
     public void populateFrame_No_Tries_with_Exceptions() {
         Exception exception = assertThrows(BawlingException.class, () -> {
-            new BallingFrame( null);
+            new BawlingFrame( null);
 
         });
 

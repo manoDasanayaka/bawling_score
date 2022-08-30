@@ -1,24 +1,24 @@
 package com.dius.bawling.util;
 
 import com.dius.bawling.exception.BawlingException;
-import com.dius.bawling.model.BallingFrame;
-import com.dius.bawling.model.BallingTry;
+import com.dius.bawling.model.BawlingFrame;
+import com.dius.bawling.model.BawlingTry;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class BawlingBuilderUtil {
-    public static BallingFrame generateBallingFrame(int try1, int try2) throws BawlingException {
-        List<BallingTry> frameTries = new ArrayList<>();
-        frameTries.add(new BallingTry(try1));
-        frameTries.add(new BallingTry(try2));
-        BallingFrame frame = new BallingFrame(frameTries);
+    public static BawlingFrame generateBallingFrame(int try1, int try2) throws BawlingException {
+        List<BawlingTry> frameTries = new ArrayList<>();
+        frameTries.add(new BawlingTry(try1));
+        frameTries.add(new BawlingTry(try2));
+        BawlingFrame frame = new BawlingFrame(frameTries);
         return  frame;
     }
-   public static BallingFrame generateBallingFrame(int strikeTry) throws BawlingException {
-        List<BallingTry> frameTries = new ArrayList<>();
-        frameTries.add(new BallingTry(strikeTry));
-        BallingFrame frame = new BallingFrame(frameTries);
+   public static BawlingFrame generateBallingFrame(int strikeTry) throws BawlingException {
+        List<BawlingTry> frameTries = new ArrayList<>();
+        frameTries.add(new BawlingTry(strikeTry));
+        BawlingFrame frame = new BawlingFrame(frameTries);
         return  frame;
     }
 }

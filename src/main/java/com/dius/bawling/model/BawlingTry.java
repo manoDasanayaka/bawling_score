@@ -1,11 +1,14 @@
 package com.dius.bawling.model;
 
-public class BallingTry {
+/**
+ * This is the model class to denote a Bawling Try
+ */
+public class BawlingTry {
 
     private int  knockedNumberOfPins;
     private boolean isStrike = false;
 
-    public BallingTry(int numberOfPins){
+    public BawlingTry(int numberOfPins){
         if(numberOfPins == 10){
             setStrike(true);
         }

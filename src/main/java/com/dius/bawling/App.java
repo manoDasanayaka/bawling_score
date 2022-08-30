@@ -1,8 +1,8 @@
 package com.dius.bawling;
 
 import com.dius.bawling.exception.BawlingException;
-import com.dius.bawling.model.BallingFrame;
-import com.dius.bawling.model.BallingGame;
+import com.dius.bawling.model.BawlingFrame;
+import com.dius.bawling.model.BawlingGame;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,15 +15,15 @@ public class App
 
         System.out.println( "Welcome to Bawling!" );
 
-        BallingFrame frame1 = generateBallingFrame(4,5);
-        BallingFrame frame2 = generateBallingFrame(4,6);
-        BallingFrame frame3 = generateBallingFrame(4,2);
-        List<BallingFrame> gameFrames = new ArrayList<>();
+        BawlingFrame frame1 = generateBallingFrame(4,5);
+        BawlingFrame frame2 = generateBallingFrame(4,6);
+        BawlingFrame frame3 = generateBallingFrame(4,2);
+        List<BawlingFrame> gameFrames = new ArrayList<>();
         gameFrames.add(frame1);
         gameFrames.add(frame2);
         gameFrames.add(frame3);
 
-        BallingGame game = new BallingGame();
+        BawlingGame game = new BawlingGame();
         game.setGameFrames(gameFrames);
         int score = game.getScore();
         System.out.println("Score is ===>"+ score);

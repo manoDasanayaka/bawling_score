@@ -4,11 +4,11 @@ import com.dius.bawling.exception.BawlingException;
 
 import java.util.List;
 
-public class BallingFrame {
+public class BawlingFrame {
 
-    private List<BallingTry> triesList;
+    private List<BawlingTry> triesList;
 
-    public BallingFrame(List<BallingTry> triesList) throws BawlingException {
+    public BawlingFrame(List<BawlingTry> triesList) throws BawlingException {
         this.triesList = triesList;
         this.populateFrame();
     }
@@ -17,18 +17,18 @@ public class BallingFrame {
 
     private boolean isWithStrike;
 
-    public List<BallingTry> getTriesList() {
+    public List<BawlingTry> getTriesList() {
         return triesList;
     }
 
-    public void setTriesList(List<BallingTry> triesList) {
+    public void setTriesList(List<BawlingTry> triesList) {
         this.triesList = triesList;
     }
 
 
 
     public int getTotalOfTries(){
-        return this.triesList.stream().mapToInt(BallingTry::getKnockedNumberOfPins).sum();
+        return this.triesList.stream().mapToInt(BawlingTry::getKnockedNumberOfPins).sum();
     }
 
 
