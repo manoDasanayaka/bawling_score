@@ -5,6 +5,8 @@ import com.dius.bawling.exception.BawlingException;
 import java.util.List;
 import java.util.ListIterator;
 
+import static com.dius.bawling.constants.IBawlingGameConstants.NUMBER_OF_FRAMES_PER_GAME;
+
 /**
  *  Denotes a Game, game contains a list of {@linkplain BawlingFrame}
  */
@@ -22,7 +24,7 @@ public class BawlingGame {
      * @throws BawlingException when the passed in list of Frames are empty, null or having more than maximum capacity.(10)
      */
     public void setGameFrames(List<BawlingFrame> gameFrames) throws BawlingException {
-        if(gameFrames == null || gameFrames.size() !=  10)
+        if(gameFrames == null || gameFrames.size() !=  NUMBER_OF_FRAMES_PER_GAME)
             throw new BawlingException("Only 10  frames per Game!");
         this.gameFrames = gameFrames;
     }
@@ -47,7 +49,7 @@ public class BawlingGame {
      */
     public int getStrikeScore(ListIterator<BawlingFrame> framesIterator){
         int nextIndex =   framesIterator.nextIndex();
-        if(nextIndex == 10)
+        if(nextIndex == NUMBER_OF_FRAMES_PER_GAME)
             return  0;
         BawlingFrame nextFrame = gameFrames.get(nextIndex);
         if(nextFrame.isWithStrike()){
@@ -70,14 +72,14 @@ public class BawlingGame {
         while(framesIterator.hasNext()){
             BawlingFrame bawlingFrame =   framesIterator.next();
             if(bawlingFrame.isSpareFrame()){ // spare frame!
-                System.out.println("It's a Spare!");
+                System.out.println("***********It's a Spare!****************");
 
                   BawlingFrame nextFrame =   getNextBallingFrame(framesIterator);
                   int nextBawlScore = (nextFrame!=null) ? nextFrame.getTriesList().get(0).getKnockedNumberOfPins() : 0;
                 System.out.println("scoreFromNext =>"+nextBawlScore);
                   bonusScoreTotal = bonusScoreTotal + nextBawlScore;
             }else if(bawlingFrame.isWithStrike()){ // strike!
-                System.out.println("It's a strike!");
+                System.out.println("****************It's a strike!*****************");
                 int scoreFromNextTwo = getStrikeScore(framesIterator);// add the next two
                 System.out.println("scoreFromNextTwo =>"+scoreFromNextTwo);
                 bonusScoreTotal= bonusScoreTotal + scoreFromNextTwo;
